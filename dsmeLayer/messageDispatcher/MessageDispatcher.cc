@@ -468,8 +468,9 @@ uint8_t MessageDispatcher::nextHoppingSequenceChannel(uint8_t nextSlot, uint8_t 
         this->dsme.getMAC_PIB().macHoppingSequenceList[(sdIndex * numGTSlots + slotId + channelOffset + ebsn) % hoppingSequenceLength];
     LOG_INFO("Using channel " << channel << " - numGTSlots: " << numGTSlots << " EBSN: " << ebsn << " sdIndex: " << sdIndex
                               << " slot: " << slotId << " Superframe " << nextSuperframe << " channelOffset: " << channelOffset
-                              << " Direction: " << currentACTElement->getDirection());
+                              << " Direction: " << (int) currentACTElement->getDirection());
     return channel;
+    //PHIL: explicit conversion of enums necessary
 }
 
 bool MessageDispatcher::handleSlotEvent(uint8_t slot, uint8_t superframe, int32_t lateness) {

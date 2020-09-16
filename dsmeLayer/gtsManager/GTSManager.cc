@@ -740,7 +740,8 @@ bool GTSManager::handleGTSResponse(IDSMEMessage* msg) {
         }
     } else {
         // A denied request should not be sent via broadcast!
-        LOG_ERROR(management.status << " " << replyNotifyCmd.getDestinationAddress() << " " << dsme.getMAC_PIB().macShortAddress);
+        //PHIL: explicit conversion of enums necessary
+        LOG_ERROR((int)management.status << " " << replyNotifyCmd.getDestinationAddress() << " " << dsme.getMAC_PIB().macShortAddress);
         DSME_ASSERT(false);
     }
 
